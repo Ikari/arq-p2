@@ -3,7 +3,8 @@
         <div class="page-header">
             <h1><span class="glyphicon glyphicon-user"></span> Editar Cliente</h1>
         </div>
-        <form name="clienteForm" ng-submit="processForm()">                    
+        <form name="clienteForm" ng-submit="salvarCliente()">            
+            <input type="hidden" name="id" ng-model="cliente.outerid"/>        
             <div class="form-group">
                 <label>Nome</label><input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/>
             </div>
@@ -16,8 +17,11 @@
             <div class="form-group">
                 <label>Telefone</label><input type="text" name="telefone" class="form-control" ng-model="cliente.telefone" required/>
             </div>                  
+            <button type="button" class="btn btn-danger bt-lg btn-block" ng-click="voltar()">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+            </button>
             <button type="submit" class="btn btn-success bt-lg btn-block">
-                <span class="glyphicon glyphicon-flash"></span> Salvar
+                <span class="glyphicon glyphicon-flash"></span> Atualizar
             </button>
         </form>
     </div>

@@ -1,0 +1,26 @@
+<div class="container" ng-init="carregar()">
+    <h1>LISTA DE REGRAS</h1>
+
+    <div class="filter" style="display:none">
+        <input type="text"/>
+    </div>
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th style="width:150px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="regra in regras">
+                <td>{{regra.nome}}</td>
+                <td>
+                    <a ng-href="#regras/{{regra.outerId}}" class="btn btn-success">Editar</a>
+                    <button ng-click="deletar(regra.outerId)" style="margin-left:3px;" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+    <a ng-href="#regras/novo" class="btn btn-success">Novo</a>
+</div>

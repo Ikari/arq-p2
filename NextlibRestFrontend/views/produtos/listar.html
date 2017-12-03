@@ -1,0 +1,30 @@
+<div class="container" ng-init="carregar()">
+    <h1>LISTA DE PRODUTOS</h1>
+
+    <div class="filter" style="display:none">
+        <input type="text"/>
+    </div>
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>PREÇO</th>
+                <th>DESCRIÇÃO</th>
+                <th style="width:150px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="produto in produtos">
+                <td>{{produto.nome}}</td>
+                <td>{{produto.preco}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>
+                    <a ng-href="#produtos/{{produto.outerId}}" class="btn btn-success">Editar</a>
+                    <button ng-click="deletar(produto.outerId)" style="margin-left:3px;" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+    <a ng-href="#produtos/novo" class="btn btn-success">Novo</a>
+</div>

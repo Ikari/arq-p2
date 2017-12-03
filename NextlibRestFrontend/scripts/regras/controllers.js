@@ -1,64 +1,28 @@
-var app = angular.module('nextApp.clientes.controllers', []);
+var app = angular.module('nextApp.regras.controllers', []);
 
 app.controller(
-    'clientesLista', 
+    'regraLista', 
     [
         '$scope',
         '$http',
         function($scope, $http){
 
-            $scope.clientes = [];
-            $scope.carregarClientes = function(){
+            $scope.regras = [];
+            $scope.carregar = function(){
                 $http
-                .get("http://localhost:2379/api/clientes")
+                .get("http://localhost:2379/api/regras")
                 .success(function(data){
-                    $scope.clientes = data;
+                    $scope.regras = data;
                 })
                 .error(function(data){
                     console.log(data);
                 });
             }
-            $scope.deletarCliente = function(id){
+            $scope.deletar = function(id){
                 $http
-                .delete("http://localhost:2379/api/clientes/" + id)
+                .delete("http://localhost:2379/api/regras/" + id)
                 .success(function(data){
-                    $scope.carregarClientes();
-                })
-                .error(function(data){
-                    console.log(data);
-                });
-            }
-        }
-    ]
-);
-
-app.controller(
-    'clienteEditar', 
-    [
-        '$scope',
-        '$http',
-        '$location',
-        '$route',
-        function($scope, $http, $location, $route){
-            $scope.cliente = {};            
-            $scope.voltar = function(){ $location.path("/clientes"); }
-            $scope.carregarCliente = function(){
-                $http
-                .get("http://localhost:2379/api/clientes/" + $route.current.params.id)
-                .success(function(data){
-                    console.log(data);
-                    $scope.cliente = data;
-                })
-                .error(function(data){
-                    console.log(data);
-                });
-            }
-            $scope.salvarCliente = function(){
-                $http
-                .put("http://localhost:2379/api/clientes/" + $route.current.params.id, $scope.cliente)
-                .success(function(data){
-                    console.log(data);
-                    $location.path("/clientes");
+                    $scope.carregar();
                 })
                 .error(function(data){
                     console.log(data);
@@ -69,21 +33,57 @@ app.controller(
 );
 
 app.controller(
-    'clienteCriar', 
+    'regraEditar', 
     [
         '$scope',
         '$http',
         '$location',
         '$route',
         function($scope, $http, $location, $route){
-            $scope.cliente = {};            
-            $scope.voltar = function(){ $location.path("/clientes"); }
-            $scope.salvarCliente = function(){
+            $scope.regra = {};            
+            $scope.voltar = function(){ $location.path("/regras"); }
+            $scope.carregar = function(){
                 $http
-                .post("http://localhost:2379/api/clientes", $scope.cliente)
+                .get("http://localhost:2379/api/regras/" + $route.current.params.id)
                 .success(function(data){
                     console.log(data);
-                    $location.path("/clientes");
+                    $scope.regra = data;
+                })
+                .error(function(data){
+                    console.log(data);
+                });
+            }
+            $scope.salvar = function(){
+                $http
+                .put("http://localhost:2379/api/regras/" + $route.current.params.id, $scope.regra)
+                .success(function(data){
+                    console.log(data);
+                    $location.path("/regras");
+                })
+                .error(function(data){
+                    console.log(data);
+                });
+            }
+        }
+    ]
+);
+
+app.controller(
+    'regraCriar', 
+    [
+        '$scope',
+        '$http',
+        '$location',
+        '$route',
+        function($scope, $http, $location, $route){
+            $scope.regra = {};            
+            $scope.voltar = function(){ $location.path("/regras"); }
+            $scope.salvar = function(){
+                $http
+                .post("http://localhost:2379/api/regras", $scope.regra)
+                .success(function(data){
+                    console.log(data);
+                    $location.path("/regras");
                 })
                 .error(function(data){
                     console.log(data);

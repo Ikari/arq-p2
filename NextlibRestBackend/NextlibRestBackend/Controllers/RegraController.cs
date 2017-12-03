@@ -1,46 +1,54 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Next.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using _models = Next.Models;
 
 namespace NextlibRestBackend.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Regra")]
+    [Route("api/regras")]
     public class RegraController : Controller
     {
+        RegraRepository repository;
+
+        public RegraController()
+        {
+            repository = new RegraRepository();
+        }
+
         // GET: api/Regra
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<_models.Regra> Get()
         {
-            return new string[] { "value1", "value2" };
+            return repository.Get();
         }
 
         // GET: api/Regra/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public _models.Regra Get(string id)
         {
-            return "value";
+            return repository.Get(id);
         }
         
         // POST: api/Regra
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]_models.Regra value)
         {
+            repository.Create(value);
         }
         
         // PUT: api/Regra/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]_models.Regra value)
         {
+            repository.Update(value, id);
         }
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            repository.Delete(id);
         }
     }
 }

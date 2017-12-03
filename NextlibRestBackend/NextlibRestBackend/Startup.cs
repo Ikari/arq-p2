@@ -35,7 +35,7 @@ namespace NextlibRestBackend
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(options => options.WithOrigins("*").AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins("*").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
             app.UseMvc();
         }
     }

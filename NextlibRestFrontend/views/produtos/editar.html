@@ -1,0 +1,25 @@
+<div class="container" ng-init="carregar()">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h1><span class="glyphicon glyphicon-user"></span> Editar Produtos</h1>
+        </div>
+        <form ng-submit="salvar()">            
+            <input type="hidden" name="id" ng-model="produto.outerid"/>        
+            <div class="form-group">
+                <label>Nome</label><input type="text" name="nome" class="form-control" ng-model="produto.nome" required/>
+            </div>
+            <div class="form-group">
+                <label>Preço</label><input type="text" name="preco" class="form-control" ng-model="produto.preco" required/>
+            </div>
+            <div class="form-group">
+                <label>Descrição</label><input type="Descrição" name="descricao" class="form-control" ng-model="produto.descricao" required/>
+            </div>
+            <button type="button" class="btn btn-danger bt-lg btn-block" ng-click="voltar()">
+                <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+            </button>
+            <button type="submit" class="btn btn-success bt-lg btn-block">
+                <span class="glyphicon glyphicon-flash"></span> Criar
+            </button>
+        </form>
+    </div>
+</div>

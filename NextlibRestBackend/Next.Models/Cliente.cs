@@ -1,11 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
 
 namespace Next.Models
 {
-    public class Cliente
+    public class Cliente : ICollection
     {
+        [BsonId]
         public ObjectId Id { get; set; }
         public string OuterId { get { return Id.ToString(); } }
         [BsonElement("nome")]
@@ -16,11 +16,5 @@ namespace Next.Models
         public string Nascimento { get; set; }
         [BsonElement("telefone")]
         public string Telefone { get; set; }
-
-        [BsonElement("enderecos")]
-        private object Enderecos { get; set; }
-
-        [BsonElement("_class")]
-        private string Class { get; set; }
     }
 }

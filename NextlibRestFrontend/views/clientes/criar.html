@@ -1,0 +1,27 @@
+<div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+                <h1><span class="glyphicon glyphicon-user"></span> Cadastrar Cliente</h1>
+            </div>
+            <form name="clienteForm" ng-submit="salvarCliente()">                    
+                <div class="form-group">
+                    <label>Nome</label><input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/>
+                </div>
+                <div class="form-group">
+                    <label>CPF</label><input type="text" name="cpf" class="form-control" ng-model="cliente.cpf" required/>
+                </div>
+                <div class="form-group">
+                    <label>Data de Nascimento</label><input type="date" name="nascimento" class="form-control" ng-model="cliente.nascimento" required/>
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label><input type="text" name="telefone" class="form-control" ng-model="cliente.telefone" required/>
+                </div>                  
+                <button type="button" class="btn btn-danger bt-lg btn-block" ng-click="voltar()">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+                </button>
+                <button type="submit" class="btn btn-success bt-lg btn-block">
+                    <span class="glyphicon glyphicon-flash"></span> Criar
+                </button>
+            </form>
+        </div>
+    </div>

@@ -1,64 +1,28 @@
-var app = angular.module('nextApp.clientes.controllers', []);
+var app = angular.module('nextApp.produtos.controllers', []);
 
 app.controller(
-    'clientesLista', 
+    'produtoLista', 
     [
         '$scope',
         '$http',
         function($scope, $http){
 
-            $scope.clientes = [];
-            $scope.carregarClientes = function(){
+            $scope.produtos = [];
+            $scope.carregar = function(){
                 $http
-                .get("http://localhost:2379/api/clientes")
+                .get("http://localhost:2379/api/produtos")
                 .success(function(data){
-                    $scope.clientes = data;
+                    $scope.produtos = data;
                 })
                 .error(function(data){
                     console.log(data);
                 });
             }
-            $scope.deletarCliente = function(id){
+            $scope.deletar = function(id){
                 $http
-                .delete("http://localhost:2379/api/clientes/" + id)
+                .delete("http://localhost:2379/api/produtos/" + id)
                 .success(function(data){
-                    $scope.carregarClientes();
-                })
-                .error(function(data){
-                    console.log(data);
-                });
-            }
-        }
-    ]
-);
-
-app.controller(
-    'clienteEditar', 
-    [
-        '$scope',
-        '$http',
-        '$location',
-        '$route',
-        function($scope, $http, $location, $route){
-            $scope.cliente = {};            
-            $scope.voltar = function(){ $location.path("/clientes"); }
-            $scope.carregarCliente = function(){
-                $http
-                .get("http://localhost:2379/api/clientes/" + $route.current.params.id)
-                .success(function(data){
-                    console.log(data);
-                    $scope.cliente = data;
-                })
-                .error(function(data){
-                    console.log(data);
-                });
-            }
-            $scope.salvarCliente = function(){
-                $http
-                .put("http://localhost:2379/api/clientes/" + $route.current.params.id, $scope.cliente)
-                .success(function(data){
-                    console.log(data);
-                    $location.path("/clientes");
+                    $scope.carregar();
                 })
                 .error(function(data){
                     console.log(data);
@@ -69,21 +33,57 @@ app.controller(
 );
 
 app.controller(
-    'clienteCriar', 
+    'produtoEditar', 
     [
         '$scope',
         '$http',
         '$location',
         '$route',
         function($scope, $http, $location, $route){
-            $scope.cliente = {};            
-            $scope.voltar = function(){ $location.path("/clientes"); }
-            $scope.salvarCliente = function(){
+            $scope.produto = {};            
+            $scope.voltar = function(){ $location.path("/produtos"); }
+            $scope.carregar = function(){
                 $http
-                .post("http://localhost:2379/api/clientes", $scope.cliente)
+                .get("http://localhost:2379/api/produtos/" + $route.current.params.id)
                 .success(function(data){
                     console.log(data);
-                    $location.path("/clientes");
+                    $scope.produto = data;
+                })
+                .error(function(data){
+                    console.log(data);
+                });
+            }
+            $scope.salvar = function(){
+                $http
+                .put("http://localhost:2379/api/produtos/" + $route.current.params.id, $scope.produto)
+                .success(function(data){
+                    console.log(data);
+                    $location.path("/produtos");
+                })
+                .error(function(data){
+                    console.log(data);
+                });
+            }
+        }
+    ]
+);
+
+app.controller(
+    'produtoCriar', 
+    [
+        '$scope',
+        '$http',
+        '$location',
+        '$route',
+        function($scope, $http, $location, $route){
+            $scope.produto = {};            
+            $scope.voltar = function(){ $location.path("/produtos"); }
+            $scope.salvar = function(){
+                $http
+                .post("http://localhost:2379/api/produtos", $scope.produto)
+                .success(function(data){
+                    console.log(data);
+                    $location.path("/produtos");
                 })
                 .error(function(data){
                     console.log(data);

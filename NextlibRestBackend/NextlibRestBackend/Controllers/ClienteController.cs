@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using _models = Next.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Next.Repositories;
-using Microsoft.AspNetCore.Cors;
+using System.Collections.Generic;
+using _models = Next.Models;
 
 namespace NextlibRestBackend.Controllers
 {
@@ -14,36 +9,46 @@ namespace NextlibRestBackend.Controllers
     [Route("api/clientes")]
     public class ClienteController : Controller
     {
-        // GET: api/Cliente
+        ClienteRepository repository;
+
+        public ClienteController()
+        {
+            repository = new ClienteRepository();
+        }
+
+        // GET: api/clientes
         [HttpGet]
         public IEnumerable<_models.Cliente> Get()
         {
-            return new ClienteRepository().GetClientes();
+            return repository.Get();
         }
 
-        // GET: api/Cliente/5
-        [HttpGet("{id}", Name = "Get")]
+        // GET: api/clientes/5
+        [HttpGet("{id}")]
         public _models.Cliente Get(string id)
         {
-            return new ClienteRepository().GetCliente(id);
+            return repository.Get(id);
         }
         
-        // POST: api/Cliente
+        // POST: api/clientes
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]_models.Cliente value)
         {
+            repository.Create(value);
         }
         
-        // PUT: api/Cliente/5
+        // PUT: api/clientes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]_models.Cliente value)
         {
+            repository.Update(value, id);
         }
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            repository.Delete(id);
         }
     }
 }

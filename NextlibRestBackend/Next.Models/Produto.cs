@@ -3,8 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Next.Models
 {
-    public class Produto
+    public class Produto : ICollection
     {
+        [BsonId]
         public ObjectId Id { get; set; }
         public string OuterId { get { return Id.ToString(); } }
         [BsonElement("nome")]
@@ -13,12 +14,5 @@ namespace Next.Models
         public string Descricao { get; set; }
         [BsonElement("preco")]
         public double Preco { get; set; }
-        [BsonElement("thumbnail")]
-        public byte[] Thumb { get; set; }
-        [BsonElement("imagem")]
-        public byte[] Imagem { get; set; }
-
-        [BsonElement("_class")]
-        private string Class { get; set; }
     }
 }
