@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Next.Repositories", "Next.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Next.Models", "Next.Models\Next.Models.csproj", "{0C90F471-9113-4B87-BBAE-8FE9CE7B634F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextLibRestFrontEndMVC", "NextLibRestFrontEndMVC\NextLibRestFrontEndMVC.csproj", "{4B81FD1C-9165-4505-86C5-CB50E9F4AD4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0C90F471-9113-4B87-BBAE-8FE9CE7B634F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C90F471-9113-4B87-BBAE-8FE9CE7B634F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C90F471-9113-4B87-BBAE-8FE9CE7B634F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B81FD1C-9165-4505-86C5-CB50E9F4AD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B81FD1C-9165-4505-86C5-CB50E9F4AD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B81FD1C-9165-4505-86C5-CB50E9F4AD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B81FD1C-9165-4505-86C5-CB50E9F4AD4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
