@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json;
 using NextLibRestFrontEndMVC.Models;
-
 namespace NextLibRestFrontEndMVC.Controllers
 {
     public class ClienteController : Controller
@@ -94,8 +93,6 @@ namespace NextLibRestFrontEndMVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch

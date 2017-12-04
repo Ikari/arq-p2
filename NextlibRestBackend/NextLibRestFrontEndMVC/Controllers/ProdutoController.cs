@@ -38,12 +38,6 @@ namespace NextLibRestFrontEndMVC.Controllers
             return View(produtos);
         }
 
-        // GET: Produto/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Produto/Create
         public ActionResult Create()
         {
