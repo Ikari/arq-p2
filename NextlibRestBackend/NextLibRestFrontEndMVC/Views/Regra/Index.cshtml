@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NextLibRestFrontEndMVC.Models.RegraViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Regras";
+}
+
+<h2>LISTA DE REGRAS</h2>
+
+<p>
+    <a asp-action="Create">Nova Regra</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.OuterId }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
